@@ -22,7 +22,6 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 🔹 Determinar si el porcentaje es positivo o negativo
     final bool isPositive = !percent.contains('-');
     final Color boxColor = isPositive ? Colors.green : Colors.red;
     final IconData arrowIcon =
@@ -46,15 +45,24 @@ class CategoryItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 🔹 Icono
-          Image.asset(
-            icon,
-            width: 45,
-            height: 45,
+          // 🔹 Cuadro gris del ícono
+          Container(
+            width: 50,
+            height: 50,
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.grey[200], // 🔸 Fondo gris claro
+              border: Border.all(color: Colors.grey[400]!, width: 1), // 🔸 Borde gris
+              borderRadius: BorderRadius.circular(8), // 🔸 Cuadro con esquinas suaves
+            ),
+            child: Image.asset(
+              icon,
+              fit: BoxFit.contain,
+            ),
           ),
           const SizedBox(width: 16),
 
-          // 🔹 Información
+          // 🔹 Información principal
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
